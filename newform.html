@@ -1,0 +1,115 @@
+<html ng-app = "app2">
+	<style>
+		.clr{color:red;}
+		.star{color:red;}
+	</style>
+	
+	
+
+
+
+	<body>
+		<div class="container" ng-controller="formsController">
+		<center><h2 class="text-danger">Student Form</h2></center>
+		 	<a href = "#index" ng-click = "studentdata()" class = "btn btn-sm btn-info ">All Students</a>
+		  <a href = "home.html" class = "btn btn-info btn-sm">Back</a> 
+		<hr/>
+		
+
+			 <form class="form-horizontal form-success" name = "studentform" role = "form"><!--form starting -->
+		    
+		     <div class="form-group has-success" ><!--name div starting-->
+		      <label class="control-label col-sm-4"for ="name"><span class="star">*</span> Student Name:</label>
+		       		
+		      <div class="col-sm-4">
+		        <input type="text" name="name" ng-model="student.name" class="form-control" placeholder="Student Name"ng-pattern="/[a-z|A-Z|\s]/"required/>
+		        		
+		        <span ng-show = "studentform.name.$dirty && studentform.name.$invalid">
+		        <span ng-show = "studentform.name.$error.required " class = "clr">Name is required</span>
+		        <span ng-show = "studentform.name.$error.pattern" class = "clr">Enter name in correct format</span>
+		      </div> 
+		  	</div><!--name div ending-->
+
+		    <div class = "form-group has-success"><!--email div starting-->
+		      <label class = "control-label col-sm-4" for = "email"><span class = "star">*</span>Email: </label>
+
+		      <div class = "col-sm-4">
+		      	<input type = "email" name = "email" ng-model = "student.email" class = "form-control" placeholder="Email" required/>
+		      		
+		      	<span ng-show = "studentform.email.$dirty && studentform.email.$invalid">
+		      	<span ng-show = "studentform.email.$error.required" class = "clr">Email is required</span>
+		      	<span ng-show = "studentform.email.$error.email"class = "clr">Enter valid Email</span>
+		      </div>
+
+				</div><!--email div ending-->
+
+			<div class="form-group has-success" ><!--dob div starting-->
+		      <label class="control-label col-sm-4"for ="name"><span class="star">*</span> Student DOB:</label>
+		       		
+		    <div class="col-sm-4">
+		        <input type="text" name="dob" ng-model="student.dob" class="form-control" placeholder="dd/mm/yyyy"ng-pattern="/\d{2}\/\d{2}\/\d{4}/"required/>
+		        		
+		        <span ng-show = "studentform.dob.$dirty && studentform.dob.$invalid">
+		        <span ng-show = "studentform.dob.$error.required " class = "clr">dob is required</span>
+		        <span ng-show = "studentform.dob.$error.pattern" class = "clr">Enter dob in correct format</span>
+		      </div>
+		  	</div><!--dob div ending-->
+
+
+		  	<div class="form-group has-success" ><!--dob div starting-->
+		      <label class="control-label col-sm-4"for ="age"><span class="star">*</span> Student Age:</label>
+		       		
+		    <div class="col-sm-4">
+		        <input type="text" name="age" ng-model="student.age" class="form-control" placeholder="Enter age"ng-pattern="/[0-9]/"required/>
+		        		
+		        <span ng-show = "studentform.age.$dirty && studentform.age.$invalid">
+		        <span ng-show = "studentform.age.$error.required " class = "clr">age is required</span>
+		        <span ng-show = "studentform.age.$error.pattern" class = "clr">Enter age in correct format</span>
+		      </div>
+		  	</div><!--dob div ending-->
+
+		  	<div class = "col-sm-4"><!--college-->
+		  		<label for="college"> colleges: </label><br>
+
+    		<select ng-model="student.colleges" ng-options="c for c in colleges"></select>
+
+		  	</div><!--college-->
+
+				
+				<div class="form-group"><!--buttons div starting-->
+		     	<div class="col-sm-offset-4 col-sm-4">
+		     		<input type="submit" value="Submit" class= "btn btn-info btn-sm" ng-click="create(student);"/>
+		     		<a href = "#update" ng-click = "update(student.id)" class = "btn btn-sm btn-info">Update</a>
+
+		     		
+		    		<div ng-view>
+		   			</div>
+		     	
+		     	</div>
+		    </div><!--buttons div ending-->
+
+		     			{{student.name}}
+
+		  </form>
+		
+		 <!-- <hr/>
+		 	<div>
+				<h2 class = "text-danger">Student Details:</h2>
+				Student Name:{{student_details.name}}<br/>
+				Date of birth:{{student_details.dob}}<br/>
+				Age:{{student_details.age}}<br/>
+				Email:{{student_details.email}}<br/>
+			</div> -->
+		 
+		</div>
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+  		
+<script src = "newform.js"></script>
+	</body>	
+
+</html>
+
